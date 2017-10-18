@@ -60,7 +60,7 @@ function ReYeelightPlatform(log, config, api) {
     
     
     this.log.info("[ReYeelight][INFO]*********************************************************************");
-    this.log.info("[ReYeelight][INFO]*                         ReYeelight v%s                          *",packageFile.version);
+    this.log.info("[ReYeelight][INFO]*                         ReYeelight v%s                         *",packageFile.version);
     this.log.info("[ReYeelight][INFO]*    GitHub: https://github.com/Zzm317/homebridge-re-yeelight       *");
     this.log.info("[ReYeelight][INFO]*                                                                   *");
     this.log.info("[ReYeelight][INFO]*********************************************************************");
