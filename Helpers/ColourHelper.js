@@ -64,7 +64,6 @@ ColourHelper.prototype.argb2rgb = function(argb) {
 
 ColourHelper.prototype.rgb2hsb = function(rgb) {
     rgb = [(rgb >> 16)& 0xFF,(rgb >> 8)& 0xFF,(rgb)& 0xFF];
-    console.log(rgb);
     var hsb = [];
     var rearranged = rgb.slice(0);
     var maxIndex = 0,minIndex = 0;

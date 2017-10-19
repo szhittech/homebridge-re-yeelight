@@ -6,7 +6,8 @@ Yeelight plugin for homebridge(Rewrited)
 Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](https://github.com/nfarina/homebridge)), [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol), [aholstenson](https://github.com/aholstenson)(the author of [miio](https://github.com/aholstenson/miio)), all other developer and testers.   
 
 ## Supported Types
-1.ColorLEDBulb
+1.ColorLEDBulb  
+2.DeskLamp(ComingSoon)  
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
@@ -23,9 +24,14 @@ npm install -g miio homebridge-re-yeelight
         "platform": "ReYeelightPlatform",
         "deviceCfgs": [{
             "type": "ColorLEDBulb",
-            "ip": "192.168.50.139",
-            "token": "c69b8726240a0279894853eba94a12cb",
+            "ip": "192.168.50.xxx",
+            "token": "xxxxxxxx",
             "Name": "LED Bulb"
+        },{
+            "type": "DeskLamp",
+            "ip": "192.168.50.xxx",
+            "token": "xxxxxx",
+            "Name": "DeskLamp"
         }]
     }]
 ```
@@ -54,6 +60,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs 
+### 0.0.3
+1.add Support for desklamp
 ### 0.0.2
 1.No Change, Just emmmmmmmmmm
 ### 0.0.1

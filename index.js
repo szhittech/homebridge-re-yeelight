@@ -1,4 +1,5 @@
 require('./Devices/ColorLEDBulb');
+require('./Devices/DeskLamp');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
@@ -85,7 +86,10 @@ ReYeelightPlatform.prototype = {
                     new ColorLEDBulb(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
-                } else {
+                } else if(deviceCfg['type'] == "DeskLamp") {
+                    new DeskLamp(this, deviceCfg).forEach(function(accessory, index, arr){
+                        myAccessories.push(accessory);
+                    });
                 }
             }
             this.log.info("[ReYeelight][INFO]device size: " + deviceCfgs.length + ", accessories size: " + myAccessories.length);
