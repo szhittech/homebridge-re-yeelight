@@ -7,7 +7,7 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
 
 ## Supported Types
 1.ColorLEDBulb  
-2.DeskLamp(ComingSoon)  
+2.DeskLamp
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
