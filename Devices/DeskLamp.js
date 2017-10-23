@@ -174,38 +174,21 @@ DeskLampService.prototype.updateTimer = function() {
 
 DeskLampService.prototype.runTimer = function() {
     var that = this;
-    this.device.call("get_prop", ["power"]).then(result => {
-        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getPower: " + result);
+    this.device.call("get_prop", ["power","bright","ct"]).then(result => {
+        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getPower: " + result[0]);
         this.Lampservice.getCharacteristic(Characteristic.On).updateValue(result[0] === 'on' ? true : false);
-    }).catch(function(err) {
-        if(err == "Error: Call to device timed out"){
-            that.platform.log.debug("[ReYeelight][ERROR]DeskLamp - Lamp Offline");
-        }else{
-            that.platform.log.error("[ReYeelight][" + this.name + "][ERROR]DeskLamp - getPower Error: " + err);
-        }
-    });
-    this.device.call("get_prop", ["bright"]).then(result => {
-        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getBrightness: " + result);
-        this.Lampservice.getCharacteristic(Characteristic.Brightness).updateValue(result[0]);
-    }).catch(function(err) {
-        if(err == "Error: Call to device timed out"){
-            that.platform.log.debug("[ReYeelight][ERROR]DeskLamp - Lamp Offline");
-        }else{
-            that.platform.log.error("[ReYeelight][" + this.name + "][ERROR]DeskLamp - getBrightness Error: " + err);
-        }
-    });
-    this.device.call("get_prop", ["ct"]).then(result => {
-        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getColorTemperature: " + result);
-        ct = result[0] - 2700;
+        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getBrightness: " + result[1]);
+        this.Lampservice.getCharacteristic(Characteristic.Brightness).updateValue(result[1]);
+        ct = result[2] - 2700;
         ct = ct / 3800 * 100;
         ct = 100 - ct;
-        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getColorTemperature: " + result);
+        that.platform.log.debug("[ReYeelight][" + this.name + "][DEBUG]DeskLamp - getColorTemperature: " + result[2]);
         this.Lampservice.getCharacteristic(Characteristic.Saturation).updateValue(ct);
     }).catch(function(err) {
         if(err == "Error: Call to device timed out"){
             that.platform.log.debug("[ReYeelight][ERROR]DeskLamp - Lamp Offline");
         }else{
-            that.platform.log.error("[ReYeelight][" + this.name + "][ERROR]DeskLamp - getColorTemperature Error: " + err);
+            that.platform.log.error("[ReYeelight][" + this.name + "][ERROR]DeskLamp - Update Error: " + err);
         }
     });
 }

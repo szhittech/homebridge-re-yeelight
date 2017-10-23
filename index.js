@@ -1,5 +1,6 @@
 require('./Devices/ColorLEDBulb');
 require('./Devices/DeskLamp');
+require('./Devices/ColorLEDStrip');
 
 var fs = require('fs');
 var packageFile = require("./package.json");
@@ -88,6 +89,10 @@ ReYeelightPlatform.prototype = {
                     });
                 } else if(deviceCfg['type'] == "DeskLamp") {
                     new DeskLamp(this, deviceCfg).forEach(function(accessory, index, arr){
+                        myAccessories.push(accessory);
+                    });
+                } else if(deviceCfg['type'] == "ColorLEDStrip") {
+                    new ColorLEDStrip(this, deviceCfg).forEach(function(accessory, index, arr){
                         myAccessories.push(accessory);
                     });
                 }

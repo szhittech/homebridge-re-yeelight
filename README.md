@@ -6,14 +6,18 @@ Yeelight plugin for homebridge(Rewrited)
 Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](https://github.com/nfarina/homebridge)), [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol), [aholstenson](https://github.com/aholstenson)(the author of [miio](https://github.com/aholstenson/miio)), all other developer and testers.   
 
 ## Supported Types
-1.ColorLEDBulb  
-2.DeskLamp
+1.ColorLEDBulb(Yeelight智能灯泡)  
+2.DeskLamp(Yeelight台灯)  
+3.ColorLedStrip(Yeelight彩光灯带)  
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
 If you are using Raspberry Pi, please read [Running-HomeBridge-on-a-Raspberry-Pi](https://github.com/nfarina/homebridge/wiki/Running-HomeBridge-on-a-Raspberry-Pi).   
 2. Make sure you can see HomeBridge in your iOS devices, if not, please go back to step 1.   
 3. Install packages.   
+
+## I suggest you to turn on UpdateTimer
+## It will not send too much heartbeat packet.
 ```
 npm install -g miio homebridge-re-yeelight
 ```
@@ -25,13 +29,24 @@ npm install -g miio homebridge-re-yeelight
         "deviceCfgs": [{
             "type": "ColorLEDBulb",
             "ip": "192.168.50.xxx",
-            "token": "xxxxxxxx",
-            "Name": "LED Bulb"
+            "token": "xxxxxxxxx",
+            "Name": "LED Bulb",
+            "updatetimer": true,
+            "interval": 5
+        },{
+            "type": "ColorLEDStrip",
+            "ip": "192.168.50.xxx",
+            "token": "xxxxxxxxx",
+            "Name": "LED Strip",
+            "updatetimer": true,
+            "interval": 5
         },{
             "type": "DeskLamp",
             "ip": "192.168.50.xxx",
-            "token": "xxxxxx",
-            "Name": "DeskLamp"
+            "token": "xxxxxxxxx",
+            "Name": "DeskLamp",
+            "updatetimer": true,
+            "interval": 5
         }]
     }]
 ```
@@ -60,8 +75,10 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs 
+### 0.0.4
+1.add Support for LedStrip And Rewrite code
 ### 0.0.3
-1.add Support for desklamp
+1.add Support for Desklamp
 ### 0.0.2
 1.No Change, Just emmmmmmmmmm
 ### 0.0.1
