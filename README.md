@@ -47,7 +47,8 @@ npm install -g miio homebridge-re-yeelight
             "updatetimer": true,
             "interval": 5
         }]
-    }]
+    }
+]
 ```
 ## Get token
 Download miio2.db From your android device - path: /data/data/com.xiaomi.smarthome/databases/miio2.db  
