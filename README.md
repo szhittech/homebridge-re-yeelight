@@ -9,6 +9,7 @@ Thanks for [nfarina](https://github.com/nfarina)(the author of [homebridge](http
 1.ColorLEDBulb(Yeelight智能灯泡)  
 2.DeskLamp(Yeelight台灯)  
 3.ColorLedStrip(Yeelight彩光灯带)  
+4.CeilingLamp(Yeelight吸顶灯)  
 
 ## Installation
 1. Install HomeBridge, please follow it's [README](https://github.com/nfarina/homebridge/blob/master/README.md).   
@@ -43,12 +44,18 @@ npm install -g miio homebridge-re-yeelight
             "type": "DeskLamp",
             "ip": "192.168.50.xxx",
             "token": "xxxxxxxxx",
-            "Name": "DeskLamp",
+            "Name": "Desk Lamp",
+            "updatetimer": true,
+            "interval": 5
+        },{
+            "type": "CeilingLamp",
+            "ip": "192.168.50.xxx",
+            "token": "xxxxxxxxx",
+            "Name": "Ceiling Lamp",
             "updatetimer": true,
             "interval": 5
         }]
-    }
-]
+    }]
 ```
 ## Get token
 Download miio2.db From your android device - path: /data/data/com.xiaomi.smarthome/databases/miio2.db  
@@ -75,6 +82,8 @@ miio --discover --sync
 Wait until you get output.   
 For more information about token, please refer to [OpenMiHome](https://github.com/OpenMiHome/mihome-binary-protocol) and [miio](https://github.com/aholstenson/miio).   
 ## Version Logs 
+### 0.0.5
+1.add support for CeilingLamp
 ### 0.0.4
 1.add Support for LedStrip And Rewrite code
 ### 0.0.3
